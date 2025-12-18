@@ -22,5 +22,12 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans), system-ui, sans-serif;
+  letter-spacing: -0.01em; /* Subtle tightening for a premium feel */
+}
+
+/* Utilities for the 'studio' look */
+@utility tracking-studio {
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
 }

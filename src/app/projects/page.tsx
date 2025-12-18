@@ -1,30 +1,43 @@
-export default function Projects() {
-    const projects = [
-        {
-            title: "Project One",
-            description: "A cool project that does something amazing.",
-            link: "#",
-        },
-        {
-            title: "Project Two",
-            description: "Another fantastic project showcasing my skills.",
-            link: "#",
-        },
-        // Add more projects here
-    ];
+import Link from 'next/link';
+import { projects } from './data';
 
+export default function Projects() {
     return (
-        <div className="space-y-8">
-            <h1 className="text-4xl font-bold">My Projects</h1>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="space-y-16">
+            <header className="grid grid-cols-1 md:grid-cols-12 gap-6">
+                <div className="md:col-span-12">
+                    <h1 className="text-xs font-bold uppercase tracking-[0.2em] mb-4 text-gray-400">Selected Works</h1>
+                </div>
+            </header>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-16">
                 {projects.map((project, index) => (
-                    <div key={index} className="border p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
-                        <h2 className="text-2xl font-bold mb-2">{project.title}</h2>
-                        <p className="text-gray-600 mb-4">{project.description}</p>
-                        <a href={project.link} className="text-blue-500 hover:underline">
-                            View Project
-                        </a>
-                    </div>
+                    <Link
+                        href={project.externalLink || `/projects/${project.slug}`}
+                        key={index}
+                        className="group cursor-pointer space-y-4 block"
+                        target={project.externalLink ? "_blank" : undefined}
+                        rel={project.externalLink ? "noopener noreferrer" : undefined}
+                    >
+                        {/* Thumbnail */}
+                        <div className="aspect-[4/3] bg-gray-100 dark:bg-gray-900 group-hover:bg-gray-200 dark:group-hover:bg-gray-800 transition-colors w-full overflow-hidden rounded-sm relative">
+                            {project.thumbnail && (
+                                <img
+                                    src={project.thumbnail}
+                                    alt={project.title}
+                                    className="object-cover w-full h-full transform group-hover:scale-105 transition-transform duration-500"
+                                />
+                            )}
+                        </div>
+
+                        <div className="flex justify-between items-baseline border-b border-gray-200 dark:border-gray-800 pb-2">
+                            <h2 className="text-xl font-bold tracking-tight">{project.title}</h2>
+                            <span className="text-xs text-gray-500 font-mono">{project.year}</span>
+                        </div>
+                        <div className="flex justify-between items-start text-sm text-gray-500">
+                            <span>{project.category}</span>
+                        </div>
+                    </Link>
                 ))}
             </div>
         </div>

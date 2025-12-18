@@ -21,10 +21,10 @@ export default async function ProjectPage({ params }: PageProps) {
         <div className="max-w-2xl mx-auto pt-12 md:pt-20 space-y-12"> {/* Constrained width for readability */}
             <header className="space-y-6">
                 <div className="flex flex-col gap-2">
-                    <Link href="/projects" className="text-xs font-bold uppercase tracking-[0.2em] text-gray-400 hover:text-gray-600 transition-colors">
+                    <Link href="/projects" className="text-xs font-bold uppercase tracking-[0.2em] text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-600 transition-colors">
                         ← Back to Projects
                     </Link>
-                    <span className="text-sm font-mono text-gray-400">{project.category} / {project.year}</span>
+                    <span className="text-sm font-mono text-gray-600 dark:text-gray-400">{project.category} / {project.year}</span>
                 </div>
                 <h1 className="text-3xl md:text-4xl font-bold tracking-tight leading-tight">{project.title}</h1>
                 <p className="text-lg md:text-xl font-light text-gray-600 dark:text-gray-300 leading-relaxed">

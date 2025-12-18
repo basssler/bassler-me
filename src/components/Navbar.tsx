@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { ThemeToggle } from '@/components/ThemeToggle';
 
 export default function Navbar() {
   return (
@@ -7,7 +8,7 @@ export default function Navbar() {
         <Link href="/" className="text-sm font-bold tracking-[0.1em] uppercase">
           Bassler.
         </Link>
-        <div className="space-x-8 md:space-x-12 flex">
+        <div className="space-x-8 md:space-x-12 flex items-center">
           <Link href="/" className="text-xs font-medium tracking-[0.2em] uppercase hover:text-gray-500 transition-colors">
             Index
           </Link>
@@ -17,6 +18,7 @@ export default function Navbar() {
           <Link href="https://github.com/basssler" target="_blank" className="text-xs font-medium tracking-[0.2em] uppercase hover:text-gray-500 transition-colors hidden md:block">
             GitHub
           </Link>
+          <ThemeToggle />
         </div>
       </div>
     </nav>

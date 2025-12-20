@@ -4,9 +4,9 @@ export default function Home() {
       <section className="grid grid-cols-1 md:grid-cols-12 gap-6 pt-12">
         <div className="md:col-span-8 lg:col-span-9">
           <h1 className="text-6xl md:text-9xl font-bold tracking-tighter leading-[0.85] mb-8">
-            BASSLER<span className="text-gray-500 dark:text-gray-300">.</span>
+            BASSLER<span className="!text-black dark:!text-white">.</span>
           </h1>
-          <p className="text-xl md:text-3xl leading-snug max-w-3xl font-light text-gray-800 dark:text-gray-200">
+          <p className="text-xl md:text-3xl leading-snug max-w-3xl font-light !text-black dark:!text-white">
             Creative developer building digital experiences with a focus on minimalism, scalability, and precision.
           </p>
         </div>
@@ -24,7 +24,7 @@ export default function Home() {
           </div>
         </div>
         <div className="md:col-span-8 lg:col-span-9 flex flex-col justify-end h-full">
-          <h2 className="text-xs font-bold uppercase tracking-[0.2em] mb-6 text-gray-600 dark:text-gray-400">About</h2>
+          <h2 className="text-xs font-bold uppercase tracking-[0.2em] mb-6 !text-black dark:!text-white">About</h2>
           <div className="space-y-6 text-lg md:text-xl font-light leading-relaxed max-w-2xl">
             <p>
               Current Engineering and Business student at the University of Arkansas majoring in Industrial Engineering and Operation Analytics and Supply Chain Management.
@@ -38,7 +38,7 @@ export default function Home() {
 
       <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-6">
         <div className="lg:col-span-4">
-          <h2 className="text-xs font-bold uppercase tracking-[0.2em] mb-4 text-gray-600 dark:text-gray-400">Skills</h2>
+          <h2 className="text-xs font-bold uppercase tracking-[0.2em] mb-4 !text-black dark:!text-white">Skills</h2>
           <ul className="space-y-2 text-sm md:text-base font-medium">
             <li>Java & JavaScript</li>
             <li>Python & C#</li>
@@ -48,7 +48,7 @@ export default function Home() {
           </ul>
         </div>
         <div className="lg:col-span-4">
-          <h2 className="text-xs font-bold uppercase tracking-[0.2em] mb-4 text-gray-600 dark:text-gray-400">Connect</h2>
+          <h2 className="text-xs font-bold uppercase tracking-[0.2em] mb-4 !text-black dark:!text-white">Connect</h2>
           <ul className="space-y-2 text-sm md:text-base font-medium">
             <li className="hover:text-gray-500 cursor-pointer transition-colors">
               <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">Twitter</a>

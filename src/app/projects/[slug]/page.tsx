@@ -21,13 +21,13 @@ export default async function ProjectPage({ params }: PageProps) {
         <div className="max-w-2xl mx-auto pt-12 md:pt-20 space-y-12"> {/* Constrained width for readability */}
             <header className="space-y-6">
                 <div className="flex flex-col gap-2">
-                    <Link href="/projects" className="text-xs font-bold uppercase tracking-[0.2em] text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-600 transition-colors">
+                    <Link href="/projects" className="text-xs font-bold uppercase tracking-[0.2em] !text-black dark:!text-white hover:text-gray-500 dark:hover:text-gray-300 transition-colors">
                         ← Back to Projects
                     </Link>
-                    <span className="text-sm font-mono text-gray-600 dark:text-gray-400">{project.category} / {project.year}</span>
+                    <span className="text-sm font-mono !text-black dark:!text-white">{project.category} / {project.year}</span>
                 </div>
                 <h1 className="text-3xl md:text-4xl font-bold tracking-tight leading-tight">{project.title}</h1>
-                <p className="text-lg md:text-xl font-light text-gray-600 dark:text-gray-300 leading-relaxed">
+                <p className="text-lg md:text-xl font-light !text-black dark:!text-white leading-relaxed">
                     {project.description}
                 </p>
                 {project.image && (
@@ -41,14 +41,14 @@ export default async function ProjectPage({ params }: PageProps) {
                 {project.content.map((block, index) => {
                     switch (block.type) {
                         case 'header':
-                            return <h2 key={index} className="text-xl md:text-2xl font-bold mt-12 mb-4 tracking-tight">{block.text}</h2>;
+                            return <h2 key={index} className="text-xl md:text-2xl font-bold mt-12 mb-4 tracking-tight !text-black dark:!text-white">{block.text}</h2>;
                         case 'sub-header':
-                            return <h3 key={index} className="text-lg font-semibold mt-8 mb-2 text-gray-900 dark:text-gray-100">{block.text}</h3>;
+                            return <h3 key={index} className="text-lg font-semibold mt-8 mb-2 !text-black dark:!text-white">{block.text}</h3>;
                         case 'paragraph':
-                            return <p key={index} className="text-base text-gray-600 dark:text-gray-300 leading-relaxed">{block.text}</p>;
+                            return <p key={index} className="text-base !text-black dark:!text-white leading-relaxed">{block.text}</p>;
                         case 'list':
                             return (
-                                <ul key={index} className="list-disc pl-5 space-y-2 text-base text-gray-600 dark:text-gray-300 leading-relaxed">
+                                <ul key={index} className="list-disc pl-5 space-y-2 text-base !text-black dark:!text-white leading-relaxed">
                                     {block.items?.map((item, i) => (
                                         <li key={i}>{item}</li>
                                     ))}

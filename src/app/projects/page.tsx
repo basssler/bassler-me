@@ -6,7 +6,7 @@ export default function Projects() {
         <div className="space-y-16">
             <header className="grid grid-cols-1 md:grid-cols-12 gap-6">
                 <div className="md:col-span-12">
-                    <h1 className="text-xs font-bold uppercase tracking-[0.2em] mb-4 text-gray-600 dark:text-gray-400">Selected Works</h1>
+                    <h1 className="text-xs font-bold uppercase tracking-[0.2em] mb-4 !text-black dark:text-gray-400">Selected Works</h1>
                 </div>
             </header>
 
@@ -31,10 +31,10 @@ export default function Projects() {
                         </div>
 
                         <div className="flex justify-between items-baseline border-b border-gray-200 dark:border-gray-800 pb-2">
-                            <h2 className="text-xl font-bold tracking-tight">{project.title}</h2>
-                            <span className="text-xs text-gray-600 dark:text-gray-500 font-mono">{project.year}</span>
+                            <h2 className="text-xl font-bold tracking-tight !text-black dark:text-gray-100">{project.title}</h2>
+                            <span className="text-xs text-black dark:text-gray-400 font-mono">{project.year}</span>
                         </div>
-                        <div className="flex justify-between items-start text-sm text-gray-600 dark:text-gray-500">
+                        <div className="flex justify-between items-start text-sm !text-black dark:text-gray-400">
                             <span>{project.category}</span>
                         </div>
                     </Link>

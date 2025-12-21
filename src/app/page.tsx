@@ -27,10 +27,19 @@ export default function Home() {
           <h2 className="text-xs font-bold uppercase tracking-[0.2em] mb-6 !text-black dark:!text-white">About</h2>
           <div className="space-y-6 text-lg md:text-xl font-light leading-relaxed max-w-2xl">
             <p>
-              Current Engineering and Business student at the University of Arkansas majoring in Industrial Engineering and Operation Analytics and Supply Chain Management.
+              Current Engineering and Business student at the University of Arkansas studying Industrial Engineering and Finance. I’m pursuing a dual focus while staying intentional about where I specialize as I gain more real-world experience.
             </p>
             <p>
-              I bridge the gap between technical execution and strategic vision. As a Software Developer for Wurst Plus Three, I've built solutions reaching over 24,000 users. I'm also the Founder of Razorbook Reach, leading initiatives to improve literacy access.
+              I bridge technical execution and strategic thinking by shipping real products and leading real initiatives. I got my start contributing to Wurst+3, an open-source project with{" "}
+              <a
+                href="https://github.com/WurstPlus/wurst-plus-three"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underline underline-offset-4 hover:opacity-70 transition-opacity"
+              >
+                40K+ downloads
+              </a>
+              . I’m also the Founder of Razorbook Reach, leading projects that expand access to books and literacy support.
             </p>
           </div>
         </div>

@@ -38,27 +38,8 @@ html {
 
 /* Apply transition to specific UI elements for better performance */
 html,
-body,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p,
-span,
-div,
-section,
-header,
-footer,
-nav,
-button,
-a,
-input,
-textarea,
-select,
-.card {
-  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, box-shadow;
+body {
+  transition-property: color, background-color, border-color;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-duration: 300ms;
 }

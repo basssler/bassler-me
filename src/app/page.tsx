@@ -7,7 +7,7 @@ export default function Home() {
             BASSLER<span className="!text-black dark:!text-white">.</span>
           </h1>
           <p className="text-xl md:text-3xl leading-snug max-w-3xl font-light !text-black dark:!text-white">
-            Creative developer building digital experiences with a focus on minimalism, scalability, and precision.
+            Emerging full-stack developer & engineer building precise digital experiences with a growth mindset.
           </p>
         </div>
       </section>

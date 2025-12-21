@@ -2,13 +2,17 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 :root {
-  --background: #ffffff;
-  --foreground: #000000;
+  --background: #FAFAF9;
+  /* Warm Stone / Light Cream */
+  --foreground: #18181B;
+  /* Zinc-900 / Soft Black */
 }
 
 .dark {
-  --background: #0a0a0a;
-  --foreground: #ffffff;
+  --background: #171717;
+  /* Neutral-900 / Soft Dark */
+  --foreground: #E4E4E7;
+  /* Zinc-200 / Soft Light */
 }
 
 @theme inline {
@@ -26,13 +30,44 @@ body {
   /* Subtle tightening for a premium feel */
 }
 
-/* Apply transition to all elements to ensure smooth theme switching */
-*,
-*::before,
-*::after {
-  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
+/* Ensure html also transitions background to avoid white flashes or uncovered areas */
+html {
+  background: var(--background);
+  color: var(--foreground);
+}
+
+/* Apply transition to specific UI elements for better performance */
+html,
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+span,
+div,
+section,
+header,
+footer,
+nav,
+button,
+a,
+input,
+textarea,
+select,
+.card {
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, box-shadow;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  transition-duration: 700ms;
+  transition-duration: 300ms;
+}
+
+/* Respect users who prefer less motion */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+  }
 }
 
 /* Utilities for the 'studio' look */

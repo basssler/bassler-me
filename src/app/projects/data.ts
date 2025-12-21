@@ -7,6 +7,7 @@ export interface Project {
     image?: string;
     thumbnail?: string;
     externalLink?: string;
+    draft?: boolean;
     content: Array<{
         type: 'header' | 'sub-header' | 'paragraph' | 'list';
         text?: string;

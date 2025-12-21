@@ -5,8 +5,43 @@ import Link from 'next/link';
 // Correctly type the props for a Next.js dynamic page
 // params is a Promise in recent Next.js versions, but for simple static generation or standard SSR it's often passed directly.
 // However, sticking to the standard async component pattern is safest.
+import { Metadata } from 'next';
+
 interface PageProps {
     params: Promise<{ slug: string }>;
+}
+
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+    const { slug } = await params;
+    const project = projects.find((p) => p.slug === slug);
+
+    if (!project) {
+        return {
+            title: 'Project Not Found',
+        };
+    }
+
+    // Draft Logic: Prevent indexing if draft: true
+    if (project.draft) {
+        return {
+            title: 'Draft Project',
+            robots: {
+                index: false,
+                follow: false,
+            },
+        };
+    }
+
+    return {
+        title: project.title, // Template in layout.tsx will append " | Max Bassler"
+        description: project.description,
+        openGraph: {
+            title: project.title,
+            description: project.description,
+            images: project.image ? [{ url: project.image }] : undefined,
+            type: 'article',
+        },
+    };
 }
 
 export default async function ProjectPage({ params }: PageProps) {

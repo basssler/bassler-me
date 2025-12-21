@@ -1,5 +1,11 @@
 import Link from 'next/link';
 import { projects } from './data';
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+    title: 'Selected Works',
+    description: 'A curated collection of engineering projects, data analysis, and web applications including Housing Cluster Analysis and Literacy Data initiatives.',
+};
 
 export default function Projects() {
     return (

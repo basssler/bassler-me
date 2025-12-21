@@ -47,9 +47,7 @@ export const metadata: Metadata = {
     description: 'Creative developer building digital experiences.',
     images: ['/images/og/og-default.png'],
   },
-  icons: {
-    icon: '/favicon.ico',
-  },
+
 };
 
 export default function RootLayout({

@@ -150,5 +150,18 @@ export const projects: Project[] = [
             { type: 'header', text: 'Impact' },
             { type: 'paragraph', text: 'Directed reading and literacy initiatives in underserved communities, organizing donation drives and educational events.' }
         ]
+    },
+    {
+        slug: "normal-loss-visualizer",
+        title: "Normal Loss Function Visualizer",
+        category: "Web App",
+        year: "2026",
+        description: "An interactive educational tool for visualizing the normal loss function, reorder points, stockout probability, and inventory costs.",
+        thumbnail: "/images/normal-loss-visualizer.jpg",
+        externalLink: "https://basssler.github.io/normal-loss-visualizer/",
+        content: [
+            { type: 'header', text: 'Interactive Learning' },
+            { type: 'paragraph', text: 'This visualizer helps students and professionals understand the normal loss function, allowing them to explore how changes in reorder points affect stockout probabilities, expected shortage, and overall inventory costs.' },
+        ]
     }
 ];

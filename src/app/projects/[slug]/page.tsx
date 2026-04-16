@@ -80,7 +80,7 @@ export default async function ProjectPage({ params }: PageProps) {
     ].filter((action): action is { href: string; label: string } => Boolean(action));
 
     return (
-        <div className="max-w-2xl mx-auto pt-12 md:pt-20 space-y-12">
+        <div className="max-w-3xl mx-auto pt-12 md:pt-20 space-y-14">
             <header className="space-y-6">
                 <div className="flex flex-col gap-4">
                     <span className="text-sm font-mono !text-black dark:!text-white">{project.category} / {project.year}</span>
@@ -118,7 +118,7 @@ export default async function ProjectPage({ params }: PageProps) {
                 )}
             </header>
 
-            <article className="prose prose-lg dark:prose-invert max-w-none space-y-8">
+            <article className="prose prose-lg dark:prose-invert max-w-none space-y-10">
                 {project.content.map((block, index) => {
                     const isWriteupHeader =
                         project.slug === 'normal-loss-visualizer' &&
@@ -153,6 +153,43 @@ export default async function ProjectPage({ params }: PageProps) {
                     }
                 })}
             </article>
+
+            {project.screenshots && project.screenshots.length > 0 && (
+                <section className="space-y-8 md:space-y-10 pt-4">
+                    <div className="space-y-3">
+                        <h2 className="text-xl md:text-2xl font-bold tracking-tight !text-black dark:!text-white">
+                            Product Screens
+                        </h2>
+                        <p className="max-w-2xl text-base md:text-lg !text-black dark:!text-white leading-relaxed">
+                            These views show how the app moves from concept to decision support: first explaining the model, then visualizing the distribution, and finally comparing policy choices on cost.
+                        </p>
+                    </div>
+                    <div className="space-y-12 md:space-y-16">
+                        {project.screenshots.map((shot, index) => (
+                            <figure key={`${project.slug}-shot-${index}`} className="space-y-5 md:space-y-6">
+                                {shot.src ? (
+                                    <div className="md:-mx-10 lg:-mx-16 overflow-hidden rounded-xl border border-gray-100 dark:border-gray-800 shadow-lg bg-gray-50 dark:bg-gray-900">
+                                        <img src={shot.src} alt={shot.alt} className="w-full h-auto object-contain" />
+                                    </div>
+                                ) : (
+                                    <div className="md:-mx-10 lg:-mx-16 rounded-xl border border-dashed border-gray-300 dark:border-gray-700 bg-gray-50/80 dark:bg-gray-900/60 px-6 py-10">
+                                        <p className="text-xs font-bold uppercase tracking-[0.16em] text-gray-500 dark:text-gray-400">
+                                            Screenshot placeholder
+                                        </p>
+                                        <p className="mt-2 text-base !text-black dark:!text-white">
+                                            Add the image file for “{shot.title}” to render this screen here.
+                                        </p>
+                                    </div>
+                                )}
+                                <figcaption className="space-y-2 md:space-y-3">
+                                    <h3 className="text-lg md:text-xl font-semibold !text-black dark:!text-white">{shot.title}</h3>
+                                    <p className="max-w-2xl text-base md:text-lg !text-black dark:!text-white leading-relaxed">{shot.description}</p>
+                                </figcaption>
+                            </figure>
+                        ))}
+                    </div>
+                </section>
+            )}
 
             <nav className="pt-4 border-t border-gray-200 dark:border-gray-800 flex flex-wrap gap-x-6 gap-y-3 text-xs font-bold uppercase tracking-[0.16em]">
                 <Link href="/projects" className="!text-black dark:!text-white hover:text-gray-500 dark:hover:text-gray-300 transition-colors">

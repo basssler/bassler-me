@@ -11,6 +11,12 @@ export interface Project {
     writeupUrl?: string;
     externalLink?: string;
     draft?: boolean;
+    screenshots?: Array<{
+        src?: string;
+        alt: string;
+        title: string;
+        description: string;
+    }>;
     content: Array<{
         type: 'header' | 'sub-header' | 'paragraph' | 'list';
         text?: string;
@@ -167,6 +173,26 @@ export const projects: Project[] = [
         githubUrl: undefined,
         writeupUrl: "/projects/normal-loss-visualizer#writeup",
         externalLink: "https://basssler.github.io/normal-loss-visualizer/",
+        screenshots: [
+            {
+                src: "/images/normal-loss-qr-cost-landscape.png",
+                title: "QR Cost Landscape",
+                alt: "QR cost landscape view showing a 2D heatmap with current and optimal policy comparison cards.",
+                description: "This view compares the current inventory policy against the best sampled Q and R combination on the annual cost landscape. It helps users see where the current policy sits, what lower-cost regions look like, and how changes in reorder point and order quantity affect total annual cost.",
+            },
+            {
+                src: "/images/normal-loss-conceptual-centerpiece.png",
+                title: "Normal Loss Function Conceptual Centerpiece",
+                alt: "Conceptual explainer showing three overshoot scenarios and how the normal loss function differs from stockout probability.",
+                description: "This section explains the core idea behind the normal loss function without dropping users straight into formulas. It breaks demand outcomes into no shortage, minor overshoot, and severe overshoot so the difference between stockout frequency and shortage magnitude is easier to understand.",
+            },
+            {
+                src: "/images/normal-loss-lead-time-distribution.png",
+                title: "Lead-Time Demand Distribution",
+                alt: "Lead-time demand distribution chart showing reorder point, stockout probability tail, and computed outputs such as z-score and expected shortage.",
+                description: "This view ties the model back to the underlying distribution. Users can see the reorder point relative to average lead-time demand, interpret the right-tail stockout probability, and connect the z-score, NL(z), and expected units short into one readable explanation.",
+            },
+        ],
         content: [
             { type: 'header', text: 'Overview' },
             { type: 'paragraph', text: 'The Normal Loss Function Visualizer is an interactive teaching tool built to make a dense inventory concept easier to understand. Instead of reading formulas in isolation, visitors can manipulate the inputs and immediately see how reorder points change expected shortage, stockout probability, and the overall cost picture.' },
@@ -174,8 +200,10 @@ export const projects: Project[] = [
             { type: 'paragraph', text: 'I wanted a clearer way to explain the tradeoffs behind inventory decisions. The normal loss function is useful, but it can feel abstract when it is only presented in lecture notes or a spreadsheet. This project gave me a way to turn that theory into something people can explore and learn from directly.' },
             { type: 'header', text: 'What the App Does' },
             { type: 'paragraph', text: 'The app lets users adjust key demand and service variables, then see how those changes affect reorder points, stockout probability, expected shortage, and inventory costs. The goal is to connect the math to the business decision, so users can see both the model and the operational consequence at the same time.' },
+            { type: 'paragraph', text: 'The experience is organized around a few core screens. The QR cost landscape helps users compare current and optimal policies, the conceptual explainer shows what overshoot actually means, and the lead-time demand distribution connects the visuals back to stockout probability, safety stock, and expected shortage.' },
             { type: 'header', text: 'Development Process' },
             { type: 'paragraph', text: 'I approached the build as both a product and communication exercise. The core challenge was balancing accuracy with clarity: the calculations had to be trustworthy, but the interface also needed to stay approachable for students and non-specialists. I focused on making the inputs readable, the outputs immediate, and the visual flow simple enough that the learning path felt natural.' },
+            { type: 'paragraph', text: 'A big part of the build was deciding what each screen should teach. Rather than showing every output at once, I tried to group the interface into views that answer a specific question: where cost is lowest, what overshoot actually represents, and how the probability model connects to the decision rule.' },
             { type: 'header', text: 'What I Learned' },
             { type: 'paragraph', text: 'This project reinforced how much better technical concepts land when users can interact with them. It also pushed me to think more carefully about interface design for educational tools, especially how to present a mathematically correct model without making the experience feel dense or academic.' },
         ]

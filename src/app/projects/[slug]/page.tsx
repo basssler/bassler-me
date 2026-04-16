@@ -1,14 +1,33 @@
-import { notFound } from 'next/navigation';
-import { projects } from '../data';
 import Link from 'next/link';
-
-// Correctly type the props for a Next.js dynamic page
-// params is a Promise in recent Next.js versions, but for simple static generation or standard SSR it's often passed directly.
-// However, sticking to the standard async component pattern is safest.
 import { Metadata } from 'next';
+import { notFound } from 'next/navigation';
+
+import { projects } from '../data';
 
 interface PageProps {
     params: Promise<{ slug: string }>;
+}
+
+function isInternalUrl(url: string) {
+    return url.startsWith('/') || url.startsWith('#');
+}
+
+function ProjectActionLink({ href, label }: { href: string; label: string }) {
+    const className = "inline-flex items-center justify-center border border-gray-200 dark:border-gray-800 px-4 py-2 text-xs font-bold uppercase tracking-[0.16em] !text-black dark:!text-white hover:text-gray-500 dark:hover:text-gray-300 transition-colors";
+
+    if (isInternalUrl(href)) {
+        return (
+            <Link href={href} className={className}>
+                {label}
+            </Link>
+        );
+    }
+
+    return (
+        <a href={href} target="_blank" rel="noopener noreferrer" className={className}>
+            {label}
+        </a>
+    );
 }
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
@@ -21,7 +40,6 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
         };
     }
 
-    // Draft Logic: Prevent indexing if draft: true
     if (project.draft) {
         return {
             title: 'Draft Project',
@@ -33,7 +51,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     }
 
     return {
-        title: project.title, // Template in layout.tsx will append " | Max Bassler"
+        title: project.title,
         description: project.description,
         openGraph: {
             title: project.title,
@@ -46,25 +64,53 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
 export default async function ProjectPage({ params }: PageProps) {
     const { slug } = await params;
-    const project = projects.find((p) => p.slug === slug);
+    const projectIndex = projects.findIndex((p) => p.slug === slug);
+    const project = projectIndex >= 0 ? projects[projectIndex] : undefined;
 
     if (!project) {
         notFound();
     }
 
+    const previousProject = projectIndex > 0 ? projects[projectIndex - 1] : undefined;
+    const nextProject = projectIndex < projects.length - 1 ? projects[projectIndex + 1] : undefined;
+    const actionLinks = [
+        project.liveDemoUrl ? { href: project.liveDemoUrl, label: 'Live Demo' } : null,
+        project.githubUrl ? { href: project.githubUrl, label: 'GitHub' } : null,
+        project.writeupUrl ? { href: project.writeupUrl, label: 'Project Writeup' } : null,
+    ].filter((action): action is { href: string; label: string } => Boolean(action));
+
     return (
-        <div className="max-w-2xl mx-auto pt-12 md:pt-20 space-y-12"> {/* Constrained width for readability */}
+        <div className="max-w-2xl mx-auto pt-12 md:pt-20 space-y-12">
             <header className="space-y-6">
-                <div className="flex flex-col gap-2">
-                    <Link href="/projects" className="text-xs font-bold uppercase tracking-[0.2em] !text-black dark:!text-white hover:text-gray-500 dark:hover:text-gray-300 transition-colors">
-                        ← Back to Projects
-                    </Link>
+                <div className="flex flex-col gap-4">
                     <span className="text-sm font-mono !text-black dark:!text-white">{project.category} / {project.year}</span>
+                    <nav className="flex flex-wrap gap-3 text-xs font-bold uppercase tracking-[0.16em]">
+                        <Link href="/projects" className="!text-black dark:!text-white hover:text-gray-500 dark:hover:text-gray-300 transition-colors">
+                            Back to Projects
+                        </Link>
+                        {previousProject && (
+                            <Link href={`/projects/${previousProject.slug}`} className="!text-black dark:!text-white hover:text-gray-500 dark:hover:text-gray-300 transition-colors">
+                                Previous Project
+                            </Link>
+                        )}
+                        {nextProject && (
+                            <Link href={`/projects/${nextProject.slug}`} className="!text-black dark:!text-white hover:text-gray-500 dark:hover:text-gray-300 transition-colors">
+                                Next Project
+                            </Link>
+                        )}
+                    </nav>
                 </div>
                 <h1 className="text-3xl md:text-4xl font-bold tracking-tight leading-tight">{project.title}</h1>
                 <p className="text-lg md:text-xl font-light !text-black dark:!text-white leading-relaxed">
                     {project.description}
                 </p>
+                {actionLinks.length > 0 && (
+                    <div className="flex flex-wrap gap-3 pt-2">
+                        {actionLinks.map((action) => (
+                            <ProjectActionLink key={`${project.slug}-${action.label}`} href={action.href} label={action.label} />
+                        ))}
+                    </div>
+                )}
                 {project.image && (
                     <div className="w-full mt-8 rounded-xl overflow-hidden shadow-lg border border-gray-100 dark:border-gray-800">
                         <img src={project.image} alt={project.title} className="w-full h-auto object-cover" />
@@ -74,9 +120,22 @@ export default async function ProjectPage({ params }: PageProps) {
 
             <article className="prose prose-lg dark:prose-invert max-w-none space-y-8">
                 {project.content.map((block, index) => {
+                    const isWriteupHeader =
+                        project.slug === 'normal-loss-visualizer' &&
+                        block.type === 'header' &&
+                        block.text === 'Overview';
+
                     switch (block.type) {
                         case 'header':
-                            return <h2 key={index} className="text-xl md:text-2xl font-bold mt-12 mb-4 tracking-tight !text-black dark:!text-white">{block.text}</h2>;
+                            return (
+                                <h2
+                                    key={index}
+                                    id={isWriteupHeader ? 'writeup' : undefined}
+                                    className="text-xl md:text-2xl font-bold mt-12 mb-4 tracking-tight !text-black dark:!text-white scroll-mt-28"
+                                >
+                                    {block.text}
+                                </h2>
+                            );
                         case 'sub-header':
                             return <h3 key={index} className="text-lg font-semibold mt-8 mb-2 !text-black dark:!text-white">{block.text}</h3>;
                         case 'paragraph':
@@ -94,11 +153,26 @@ export default async function ProjectPage({ params }: PageProps) {
                     }
                 })}
             </article>
+
+            <nav className="pt-4 border-t border-gray-200 dark:border-gray-800 flex flex-wrap gap-x-6 gap-y-3 text-xs font-bold uppercase tracking-[0.16em]">
+                <Link href="/projects" className="!text-black dark:!text-white hover:text-gray-500 dark:hover:text-gray-300 transition-colors">
+                    Back to Projects
+                </Link>
+                {previousProject && (
+                    <Link href={`/projects/${previousProject.slug}`} className="!text-black dark:!text-white hover:text-gray-500 dark:hover:text-gray-300 transition-colors">
+                        Previous Project
+                    </Link>
+                )}
+                {nextProject && (
+                    <Link href={`/projects/${nextProject.slug}`} className="!text-black dark:!text-white hover:text-gray-500 dark:hover:text-gray-300 transition-colors">
+                        Next Project
+                    </Link>
+                )}
+            </nav>
         </div>
     );
 }
 
-// Generate static params for export if needed, or just for optimization
 export async function generateStaticParams() {
     return projects.map((project) => ({
         slug: project.slug,

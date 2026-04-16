@@ -19,11 +19,9 @@ export default function Projects() {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-16">
                 {projects.map((project, index) => (
                     <Link
-                        href={project.externalLink || `/projects/${project.slug}`}
+                        href={`/projects/${project.slug}`}
                         key={index}
                         className="group cursor-pointer space-y-4 block"
-                        target={project.externalLink ? "_blank" : undefined}
-                        rel={project.externalLink ? "noopener noreferrer" : undefined}
                     >
                         {/* Thumbnail */}
                         <div className="aspect-[4/3] bg-gray-100 dark:bg-gray-900 group-hover:bg-gray-200 dark:group-hover:bg-gray-800 transition-colors w-full overflow-hidden rounded-sm relative">

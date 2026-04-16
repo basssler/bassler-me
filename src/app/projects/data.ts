@@ -6,6 +6,9 @@ export interface Project {
     description: string;
     image?: string;
     thumbnail?: string;
+    liveDemoUrl?: string;
+    githubUrl?: string;
+    writeupUrl?: string;
     externalLink?: string;
     draft?: boolean;
     content: Array<{
@@ -143,6 +146,7 @@ export const projects: Project[] = [
         year: "2023 - Present",
         description: "Founded an organization to promote literacy in underserved communities by organizing book donations and initiatives.",
         thumbnail: "/images/razorbook-reach.jpg",
+        liveDemoUrl: "https://basssler.github.io/razorbook-me/",
         externalLink: "https://basssler.github.io/razorbook-me/",
         content: [
             { type: 'header', text: 'Mission' },
@@ -158,10 +162,22 @@ export const projects: Project[] = [
         year: "2026",
         description: "An interactive educational tool for visualizing the normal loss function, reorder points, stockout probability, and inventory costs.",
         thumbnail: "/images/normal-loss-visualizer.jpg",
+        liveDemoUrl: "https://basssler.github.io/normal-loss-visualizer/",
+        // TODO: Replace with the exact repository URL once confirmed.
+        githubUrl: undefined,
+        writeupUrl: "/projects/normal-loss-visualizer#writeup",
         externalLink: "https://basssler.github.io/normal-loss-visualizer/",
         content: [
-            { type: 'header', text: 'Interactive Learning' },
-            { type: 'paragraph', text: 'This visualizer helps students and professionals understand the normal loss function, allowing them to explore how changes in reorder points affect stockout probabilities, expected shortage, and overall inventory costs.' },
+            { type: 'header', text: 'Overview' },
+            { type: 'paragraph', text: 'The Normal Loss Function Visualizer is an interactive teaching tool built to make a dense inventory concept easier to understand. Instead of reading formulas in isolation, visitors can manipulate the inputs and immediately see how reorder points change expected shortage, stockout probability, and the overall cost picture.' },
+            { type: 'header', text: 'Why I Built It' },
+            { type: 'paragraph', text: 'I wanted a clearer way to explain the tradeoffs behind inventory decisions. The normal loss function is useful, but it can feel abstract when it is only presented in lecture notes or a spreadsheet. This project gave me a way to turn that theory into something people can explore and learn from directly.' },
+            { type: 'header', text: 'What the App Does' },
+            { type: 'paragraph', text: 'The app lets users adjust key demand and service variables, then see how those changes affect reorder points, stockout probability, expected shortage, and inventory costs. The goal is to connect the math to the business decision, so users can see both the model and the operational consequence at the same time.' },
+            { type: 'header', text: 'Development Process' },
+            { type: 'paragraph', text: 'I approached the build as both a product and communication exercise. The core challenge was balancing accuracy with clarity: the calculations had to be trustworthy, but the interface also needed to stay approachable for students and non-specialists. I focused on making the inputs readable, the outputs immediate, and the visual flow simple enough that the learning path felt natural.' },
+            { type: 'header', text: 'What I Learned' },
+            { type: 'paragraph', text: 'This project reinforced how much better technical concepts land when users can interact with them. It also pushed me to think more carefully about interface design for educational tools, especially how to present a mathematically correct model without making the experience feel dense or academic.' },
         ]
     }
 ];

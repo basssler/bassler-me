@@ -4,7 +4,7 @@ import { notFound } from 'next/navigation';
 
 import { projects } from '../data';
 
-interface PageProps {
+interface ProjectPageProps {
     params: Promise<{ slug: string }>;
 }
 
@@ -30,7 +30,7 @@ function ProjectActionLink({ href, label }: { href: string; label: string }) {
     );
 }
 
-export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+export async function generateMetadata({ params }: ProjectPageProps): Promise<Metadata> {
     const { slug } = await params;
     const project = projects.find((p) => p.slug === slug);
 
@@ -62,7 +62,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     };
 }
 
-export default async function ProjectPage({ params }: PageProps) {
+export default async function ProjectPage({ params }: ProjectPageProps) {
     const { slug } = await params;
     const projectIndex = projects.findIndex((p) => p.slug === slug);
     const project = projectIndex >= 0 ? projects[projectIndex] : undefined;

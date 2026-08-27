@@ -7,7 +7,7 @@ export const metadata: Metadata = {
     description: 'A curated collection of engineering projects, data analysis, and web applications including Housing Cluster Analysis and Literacy Data initiatives.',
 };
 
-export default function Projects() {
+export default function ProjectsPage() {
     return (
         <div className="space-y-16">
             <header className="grid grid-cols-1 md:grid-cols-12 gap-6">

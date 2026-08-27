@@ -1,4 +1,6 @@
-export default function Home() {
+import Link from "next/link";
+
+export default function HomePage() {
   return (
     <div className="space-y-24 md:space-y-40">
       <section className="grid grid-cols-1 md:grid-cols-12 gap-6 pt-12">
@@ -74,10 +76,10 @@ export default function Home() {
           </ul>
         </div>
         <div className="lg:col-span-4 flex items-end justify-start lg:justify-end">
-          <a href="/projects" className="group flex items-center gap-2 text-sm font-bold uppercase tracking-[0.1em]">
+          <Link href="/projects" className="group flex items-center gap-2 text-sm font-bold uppercase tracking-[0.1em]">
             View All Work
             <span className="group-hover:translate-x-1 transition-transform">→</span>
-          </a>
+          </Link>
         </div>
       </section>
     </div>

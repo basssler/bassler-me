@@ -24,7 +24,7 @@ export interface Project {
     }>;
 }
 
-// ... existing projects ...
+// Portfolio project content and ordering.
 
 
 

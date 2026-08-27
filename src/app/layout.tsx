@@ -16,16 +16,16 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL('https://www.bassler.me'),
   title: {
-    default: "Max Bassler | Creative Developer & Engineer",
+    default: "Max Bassler | Industrial Engineering & Software",
     template: "%s | Max Bassler",
   },
-  description: "Engineering and Business student bridging technical execution with strategic vision.",
+  description: "Industrial Engineering student building practical tools across software, data, and systems.",
   verification: {
     google: "d_11iTj-427J-XUv9drMycjpoagJdkdC86jZy2WCoqc",
   },
   openGraph: {
-    title: "Max Bassler | Creative Developer",
-    description: "Building scalable digital experiences with minimalism and precision.",
+    title: "Max Bassler | Industrial Engineering & Software",
+    description: "Building practical tools across software, data, and systems.",
     url: 'https://www.bassler.me',
     siteName: 'Max Bassler',
     images: [
@@ -33,7 +33,7 @@ export const metadata: Metadata = {
         url: '/images/og/og-default.png',
         width: 1200,
         height: 630,
-        alt: 'Max Bassler - Creative Developer',
+        alt: 'Max Bassler - Industrial Engineering and Software',
       },
     ],
     locale: 'en_US',
@@ -42,7 +42,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'Max Bassler',
-    description: 'Creative developer building digital experiences.',
+    description: 'Industrial Engineering student building practical tools across software, data, and systems.',
     images: ['/images/og/og-default.png'],
   },
 

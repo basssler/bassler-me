@@ -33,7 +33,6 @@ export const metadata: Metadata = {
 
 type LinkItem = {
   label: string;
-  description: string;
   href: string;
   icon: LucideIcon;
   newTab?: boolean;
@@ -42,72 +41,57 @@ type LinkItem = {
 const linkItems: LinkItem[] = [
   {
     label: "Portfolio",
-    description: "About, skills, and what I’m building",
     href: "/",
     icon: Home,
   },
   {
     label: "Selected Work",
-    description: "Engineering, data, and web projects",
     href: "/projects",
     icon: Briefcase,
   },
   {
     label: "Razorbook Reach",
-    description: "Expanding access to books and literacy support",
     href: "https://basssler.github.io/razorbook-me/",
     icon: BookOpen,
     newTab: true,
   },
   {
     label: "GitHub",
-    description: "Code, experiments, and open source",
     href: "https://github.com/basssler",
     icon: Github,
     newTab: true,
   },
   {
     label: "LinkedIn",
-    description: "Experience, leadership, and updates",
     href: "https://www.linkedin.com/in/maxbassler/",
     icon: Linkedin,
     newTab: true,
   },
   {
     label: "Instagram",
-    description: "Follow @basssler",
     href: "https://www.instagram.com/basssler/",
     icon: Instagram,
     newTab: true,
   },
   {
     label: "Email",
-    description: "bassler@uark.edu",
     href: "mailto:bassler@uark.edu",
     icon: Mail,
   },
 ];
 
 const rowClassName =
-  "group flex min-h-20 items-center gap-4 rounded-sm border border-black/10 bg-white/35 px-4 py-4 text-left transition-[transform,background-color,color,border-color] duration-200 hover:-translate-y-0.5 hover:border-black hover:bg-black hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black focus-visible:ring-offset-2 focus-visible:ring-offset-background dark:border-white/15 dark:bg-white/[0.03] dark:hover:border-white dark:hover:bg-white dark:hover:text-black dark:focus-visible:ring-white sm:min-h-24 sm:gap-5 sm:px-5";
+  "group flex min-h-[4.5rem] items-center gap-4 rounded-sm border border-black/10 bg-white/35 px-4 py-3 text-left transition-[transform,background-color,color,border-color] duration-200 hover:-translate-y-0.5 hover:border-black hover:bg-black hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black focus-visible:ring-offset-2 focus-visible:ring-offset-background dark:border-white/15 dark:bg-white/[0.03] dark:hover:border-white dark:hover:bg-white dark:hover:text-black dark:focus-visible:ring-white sm:min-h-20 sm:gap-5 sm:px-5";
 
-function LinkRow({ item, index }: { item: LinkItem; index: number }) {
+function LinkRow({ item }: { item: LinkItem }) {
   const Icon = item.icon;
   const contents = (
     <>
-      <span className="font-mono text-[10px] text-black/40 transition-colors group-hover:text-current dark:text-white/40 sm:text-xs">
-        {String(index + 1).padStart(2, "0")}
-      </span>
       <span className="flex size-10 shrink-0 items-center justify-center rounded-sm border border-black/10 transition-colors group-hover:border-current/25 dark:border-white/15 sm:size-11">
         <Icon className="size-[18px] sm:size-5" strokeWidth={1.7} aria-hidden="true" />
       </span>
-      <span className="min-w-0 flex-1">
-        <span className="block text-base font-semibold tracking-tight sm:text-lg">
-          {item.label}
-        </span>
-        <span className="mt-0.5 block text-xs leading-snug text-black/55 transition-colors group-hover:text-current/70 dark:text-white/55 sm:text-sm">
-          {item.description}
-        </span>
+      <span className="min-w-0 flex-1 text-base font-semibold tracking-tight sm:text-lg">
+        {item.label}
       </span>
       <ArrowUpRight
         className="size-5 shrink-0 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 sm:size-6"
@@ -152,42 +136,37 @@ export default function LinksPage() {
             <ThemeToggle />
           </div>
 
-          <div className="mt-10 grid grid-cols-[5.5rem_1fr] items-end gap-5 sm:mt-14 sm:grid-cols-[7rem_1fr] sm:gap-7">
-            <div className="relative aspect-[4/5] overflow-hidden rounded-sm border border-black/10 bg-black/5 dark:border-white/15 dark:bg-white/5">
+          <div className="mt-10 flex flex-col items-center text-center sm:mt-14">
+            <div className="relative size-36 overflow-hidden rounded-[1.25rem] border border-black/10 bg-black/5 shadow-sm dark:border-white/15 dark:bg-white/5 sm:size-44">
               <Image
                 src="/images/headshot.jpg"
                 alt="Max Bassler"
                 fill
                 priority
-                sizes="(min-width: 640px) 112px, 88px"
-                className="object-cover object-[center_26%]"
+                sizes="(min-width: 640px) 176px, 144px"
+                className="object-cover object-[center_24%]"
               />
             </div>
-            <div className="pb-0.5">
-              <p className="mb-2 text-[10px] font-bold uppercase tracking-[0.2em] text-black/45 dark:text-white/45 sm:text-xs">
-                Engineering × Business
-              </p>
-              <h1 className="text-4xl font-bold leading-[0.9] tracking-[-0.06em] text-black dark:text-white sm:text-6xl">
-                Max Bassler
-              </h1>
-            </div>
+            <p className="mt-7 text-[10px] font-bold uppercase tracking-[0.2em] text-black/45 dark:text-white/45 sm:text-xs">
+              Industrial Engineering
+            </p>
+            <h1 className="mt-2 text-[2.75rem] font-bold leading-[0.9] tracking-[-0.06em] text-black dark:text-white sm:text-6xl">
+              Max Bassler
+            </h1>
+            <p className="mt-5 max-w-lg text-base font-light leading-relaxed text-black/70 dark:text-white/70 sm:text-xl">
+              Building practical tools across software, data, and systems.
+            </p>
           </div>
-
-          <p className="mt-6 max-w-xl text-base font-light leading-relaxed text-black/70 dark:text-white/70 sm:mt-8 sm:text-xl">
-            Engineering and Business student bridging technical execution with
-            strategic vision.
-          </p>
         </header>
 
         <nav aria-label="Max Bassler links" className="mt-8 grid gap-2.5 sm:mt-10 sm:gap-3">
-          {linkItems.map((item, index) => (
-            <LinkRow item={item} index={index} key={item.label} />
+          {linkItems.map((item) => (
+            <LinkRow item={item} key={item.label} />
           ))}
         </nav>
 
-        <footer className="mt-auto flex items-center justify-between gap-4 pt-8 text-[10px] font-medium uppercase tracking-[0.15em] text-black/45 dark:text-white/45 sm:pt-10 sm:text-xs">
+        <footer className="mt-auto flex justify-center pt-8 text-[10px] font-medium uppercase tracking-[0.15em] text-black/45 dark:text-white/45 sm:pt-10 sm:text-xs">
           <span>bassler.me/go</span>
-          <span>&copy; {new Date().getFullYear()} Bassler.</span>
         </footer>
       </div>
     </main>

@@ -9,7 +9,7 @@ export default function HomePage() {
             BASSLER<span className="!text-black dark:!text-white">.</span>
           </h1>
           <p className="text-xl md:text-3xl leading-snug max-w-3xl font-light !text-black dark:!text-white">
-            Emerging full-stack developer & engineer building precise digital experiences with a growth mindset.
+            Industrial Engineering student building practical tools across software, data, and systems.
           </p>
         </div>
       </section>
@@ -29,10 +29,10 @@ export default function HomePage() {
           <h2 className="text-xs font-bold uppercase tracking-[0.2em] mb-6 !text-black dark:!text-white">About</h2>
           <div className="space-y-6 text-lg md:text-xl font-light leading-relaxed max-w-2xl">
             <p>
-              Current Engineering and Business student at the University of Arkansas studying Industrial Engineering and Finance. I’m pursuing a dual focus while staying intentional about where I specialize as I gain more real-world experience.
+              I’m an Industrial Engineering student at the University of Arkansas focused on turning complex systems into practical, well-designed tools.
             </p>
             <p>
-              I bridge technical execution and strategic thinking by shipping real products and leading real initiatives. I got my start contributing to Wurst+3, an open-source project with{" "}
+              I combine engineering analysis with hands-on software development by shipping real products and leading real initiatives. I got my start contributing to Wurst+3, an open-source project with{" "}
               <a
                 href="https://github.com/WurstPlus/wurst-plus-three"
                 target="_blank"

@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="800" viewBox="0 0 1200 800" role="img" aria-labelledby="title desc">
+  <title id="title">Sentiment and stock prediction</title>
+  <desc id="desc">Archived course results: core plus market holdout AUROC 0.5020, with sector-relative sentiment 0.6038. Cross-validation for the sentiment configuration was 0.4989.</desc>
+  <rect width="1200" height="800" fill="#ecece6"/>
+  <path d="M80 105H1120M80 690H1120" stroke="#b9beb6"/>
+  <g font-family="Arial, sans-serif" fill="#25372d">
+    <text x="80" y="80" font-size="19" letter-spacing="4">DATA MINING / 2026</text>
+    <text x="80" y="190" font-size="59" font-weight="700">Does sentiment add signal?</text>
+    <text x="80" y="245" font-size="26">One better holdout. A more complicated answer.</text>
+    <text x="80" y="340" font-size="23">Core + market</text>
+    <rect x="80" y="363" width="522.08" height="48" fill="#858c82"/>
+    <text x="630" y="398" font-size="30">0.5020</text>
+    <text x="80" y="480" font-size="23">+ Sector-relative sentiment</text>
+    <rect x="80" y="503" width="627.95" height="48" fill="#365c47"/>
+    <text x="735" y="538" font-size="30">0.6038</text>
+    <path d="M600 300V580" stroke="#25372d" stroke-width="2" stroke-dasharray="6 7"/>
+    <text x="610" y="590" font-size="18">0.50 reference</text>
+    <text x="80" y="638" font-size="22">2024 holdout AUROC · reported course experiment</text>
+    <text x="80" y="738" font-size="20">CV AUROC: 0.4989 / Improvement was promising, not conclusive.</text>
+  </g>
+</svg>

@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024" role="img" aria-labelledby="title desc">
+  <title id="title">Sentiment and stock prediction</title>
+  <desc id="desc">A cream speech bubble containing a market chart on a muted indigo background.</desc>
+  <rect width="1024" height="1024" fill="#50536b"/>
+  <g fill="none" stroke="#f3f0e6" stroke-width="13" stroke-linecap="square" stroke-linejoin="miter">
+    <path d="M354 362H670V588H474L410 644V588H354Z"/>
+    <path d="M393 414V548H631" stroke-width="10"/>
+    <path d="M417 514L464 472L510 492L561 437L605 455L631 419"/>
+  </g>
+</svg>

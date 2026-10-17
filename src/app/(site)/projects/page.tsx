@@ -4,7 +4,7 @@ import { Metadata } from 'next';
 
 export const metadata: Metadata = {
     title: 'Selected Works',
-    description: 'A curated collection of engineering projects, data analysis, and web applications including Housing Cluster Analysis and Literacy Data initiatives.',
+    description: 'Engineering projects, data analysis, and web applications, including an interactive case study of sentiment and stock prediction.',
 };
 
 export default function ProjectsPage() {

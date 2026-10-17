@@ -3,6 +3,7 @@ import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 
 import { projects } from '../data';
+import FinancialPredictionCaseStudy from '@/components/financial-prediction/FinancialPredictionCaseStudy';
 
 interface ProjectPageProps {
     params: Promise<{ slug: string }>;
@@ -118,7 +119,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                 )}
             </header>
 
-            <article className="prose prose-lg dark:prose-invert max-w-none space-y-10">
+            {project.caseStudy === 'financial-prediction' ? <FinancialPredictionCaseStudy /> : <article className="prose prose-lg dark:prose-invert max-w-none space-y-10">
                 {project.content.map((block, index) => {
                     const isWriteupHeader =
                         project.slug === 'normal-loss-visualizer' &&
@@ -152,7 +153,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                             return null;
                     }
                 })}
-            </article>
+            </article>}
 
             {project.screenshots && project.screenshots.length > 0 && (
                 <section className="space-y-8 md:space-y-10 pt-4">

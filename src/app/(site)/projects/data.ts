@@ -11,6 +11,7 @@ export interface Project {
     writeupUrl?: string;
     externalLink?: string;
     draft?: boolean;
+    caseStudy?: 'financial-prediction';
     screenshots?: Array<{
         src?: string;
         alt: string;
@@ -29,6 +30,18 @@ export interface Project {
 
 
 export const projects: Project[] = [
+    {
+        slug: "sentiment-financial-prediction",
+        title: "Sentiment and Stock Prediction",
+        category: "Machine Learning / Case Study",
+        year: "2026",
+        description: "Testing whether financial text adds useful signal beyond fundamentals and market data. A team research project, an AI-assisted build, and a result that needed more than one good score.",
+        thumbnail: "/images/sentiment-financial-prediction-thumb.svg",
+        image: "/images/sentiment-financial-prediction.svg",
+        githubUrl: "https://github.com/basssler/data-mining-finance-project",
+        caseStudy: 'financial-prediction',
+        content: [],
+    },
     {
         slug: "normal-loss-visualizer",
         title: "Normal Loss Function Visualizer",
